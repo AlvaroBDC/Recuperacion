@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VentasTurismoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="100" />
+          <Property Name="TipoCliente" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rutas">
+          <Key>
+            <PropertyRef Name="RutaID" />
+          </Key>
+          <Property Name="RutaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRuta" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrecioBase" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="VentaID" />
+          </Key>
+          <Property Name="VentaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClienteID" Type="int" />
+          <Property Name="RutaID" Type="int" />
+          <Property Name="CantidadPersonas" Type="int" />
+          <Property Name="ImportePago" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK__Ventas__ClienteI__4D94879B">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ventas__RutaID__4E88ABD4">
+          <End Role="Rutas" Type="Self.Rutas" Multiplicity="0..1" />
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutas">
+              <PropertyRef Name="RutaID" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="RutaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VentasTurismoModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Ventas__ClienteI__4D94879B" Association="Self.FK__Ventas__ClienteI__4D94879B">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ventas__RutaID__4E88ABD4" Association="Self.FK__Ventas__RutaID__4E88ABD4">
+            <End Role="Rutas" EntitySet="Rutas" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VentasTurismoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ClienteID" />
+          </Key>
+          <Property Name="ClienteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TipoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK__Ventas__ClienteI__4D94879B" FromRole="Clientes" ToRole="Ventas" />
+        </EntityType>
+        <EntityType Name="Rutas">
+          <Key>
+            <PropertyRef Name="RutaID" />
+          </Key>
+          <Property Name="RutaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRuta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PrecioBase" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Ventas" Relationship="Self.FK__Ventas__RutaID__4E88ABD4" FromRole="Rutas" ToRole="Ventas" />
+        </EntityType>
+        <EntityType Name="Ventas">
+          <Key>
+            <PropertyRef Name="VentaID" />
+          </Key>
+          <Property Name="VentaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClienteID" Type="Int32" />
+          <Property Name="RutaID" Type="Int32" />
+          <Property Name="CantidadPersonas" Type="Int32" />
+          <Property Name="ImportePago" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Ventas__ClienteI__4D94879B" FromRole="Ventas" ToRole="Clientes" />
+          <NavigationProperty Name="Rutas" Relationship="Self.FK__Ventas__RutaID__4E88ABD4" FromRole="Ventas" ToRole="Rutas" />
+        </EntityType>
+        <Association Name="FK__Ventas__ClienteI__4D94879B">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ClienteID" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="ClienteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ventas__RutaID__4E88ABD4">
+          <End Role="Rutas" Type="Self.Rutas" Multiplicity="0..1" />
+          <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutas">
+              <PropertyRef Name="RutaID" />
+            </Principal>
+            <Dependent Role="Ventas">
+              <PropertyRef Name="RutaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VentasTurismoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Rutas" EntityType="Self.Rutas" />
+          <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+          <AssociationSet Name="FK__Ventas__ClienteI__4D94879B" Association="Self.FK__Ventas__ClienteI__4D94879B">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ventas__RutaID__4E88ABD4" Association="Self.FK__Ventas__RutaID__4E88ABD4">
+            <End Role="Rutas" EntitySet="Rutas" />
+            <End Role="Ventas" EntitySet="Ventas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VentasTurismoModelStoreContainer" CdmEntityContainer="VentasTurismoEntities">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="VentasTurismoModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="TipoCliente" ColumnName="TipoCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rutas">
+            <EntityTypeMapping TypeName="VentasTurismoModel.Rutas">
+              <MappingFragment StoreEntitySet="Rutas">
+                <ScalarProperty Name="RutaID" ColumnName="RutaID" />
+                <ScalarProperty Name="NombreRuta" ColumnName="NombreRuta" />
+                <ScalarProperty Name="PrecioBase" ColumnName="PrecioBase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="VentasTurismoModel.Ventas">
+              <MappingFragment StoreEntitySet="Ventas">
+                <ScalarProperty Name="VentaID" ColumnName="VentaID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="RutaID" ColumnName="RutaID" />
+                <ScalarProperty Name="CantidadPersonas" ColumnName="CantidadPersonas" />
+                <ScalarProperty Name="ImportePago" ColumnName="ImportePago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
