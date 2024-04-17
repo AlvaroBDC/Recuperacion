@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recuperacion", "Recuperacio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bdVentas", "bdVentas\bdVentas.csproj", "{2C9BAD24-322E-493A-9A64-4ECE586A61AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "capaDatos", "capaDatos\capaDatos.csproj", "{BCC8B54B-0DA0-4A35-ABE1-B2245F0143B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2C9BAD24-322E-493A-9A64-4ECE586A61AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C9BAD24-322E-493A-9A64-4ECE586A61AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C9BAD24-322E-493A-9A64-4ECE586A61AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCC8B54B-0DA0-4A35-ABE1-B2245F0143B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCC8B54B-0DA0-4A35-ABE1-B2245F0143B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCC8B54B-0DA0-4A35-ABE1-B2245F0143B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCC8B54B-0DA0-4A35-ABE1-B2245F0143B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

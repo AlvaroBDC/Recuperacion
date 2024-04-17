@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="dalVenta.cs" />
     <Compile Include="Clientes.cs">
       <DependentUpon>Modelbd.tt</DependentUpon>
     </Compile>
@@ -102,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\capaDatos\capaDatos.csproj">
+      <Project>{bcc8b54b-0da0-4a35-abe1-b2245f0143b0}</Project>
+      <Name>capaDatos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

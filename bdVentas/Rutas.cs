@@ -16,13 +16,13 @@ namespace bdVentas
     {
         public Rutas()
         {
-            this.Ventas = new HashSet<Ventas>();
+            this.Ventas = new HashSet<CVentass>();
         }
     
         public int RutaID { get; set; }
         public string NombreRuta { get; set; }
         public Nullable<decimal> PrecioBase { get; set; }
     
-        public virtual ICollection<Ventas> Ventas { get; set; }
+        public virtual ICollection<CVentass> Ventas { get; set; }
     }
 }

@@ -79,5 +79,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bdVentas\bdVentas.csproj">
+      <Project>{2c9bad24-322e-493a-9a64-4ece586a61ad}</Project>
+      <Name>bdVentas</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\capaDatos\capaDatos.csproj">
+      <Project>{bcc8b54b-0da0-4a35-abe1-b2245f0143b0}</Project>
+      <Name>capaDatos</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,12 +16,12 @@ namespace bdVentas
     {
         public Clientes()
         {
-            this.Ventas = new HashSet<Ventas>();
+            this.Ventas = new HashSet<CVentass>();
         }
     
         public int ClienteID { get; set; }
         public string TipoCliente { get; set; }
     
-        public virtual ICollection<Ventas> Ventas { get; set; }
+        public virtual ICollection<CVentass> Ventas { get; set; }
     }
 }

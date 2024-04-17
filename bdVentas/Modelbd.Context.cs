@@ -27,6 +27,6 @@ namespace bdVentas
     
         public DbSet<Clientes> Clientes { get; set; }
         public DbSet<Rutas> Rutas { get; set; }
-        public DbSet<Ventas> Ventas { get; set; }
+        public DbSet<CVentass> Ventas { get; set; }
     }
 }
